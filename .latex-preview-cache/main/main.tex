@@ -1,0 +1,158 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage[
+  top=0.45in, bottom=0.65in, left=0.55in, right=0.55in
+]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{helvet}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% Colors
+\definecolor{sectionblue}{RGB}{220,230,242}
+\definecolor{linkblue}{RGB}{0,0,255}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue
+}
+
+% Custom section command
+\newcommand{\customsection}[1]{%
+    \vspace{0.5em}
+    \noindent\colorbox{sectionblue}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+        \vspace{0.14em}\centering\textbf{\fontsize{10}{12}\selectfont #1}\vspace{0.14em}%
+    }}
+    \vspace{0.4em}
+}
+
+% No section numbers
+\renewcommand{\thesection}{}
+
+% Bullet & list styling
+\renewcommand{\labelitemi}{$\bullet$}
+\setlist[itemize]{topsep=1pt, itemsep=0.7pt, partopsep=0pt, parsep=0pt, leftmargin=1.2em}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+    \textbf{\fontsize{14}{16}\selectfont Prashik Deshpande}\\[0.5ex]
+    \footnotesize
+    \faPhone\ +91 9511728414 \quad
+    \faEnvelope\ prashikdeshpande24@gmail.com \quad
+    \faGithub\ \href{https://github.com/philomath242}{philomath242} \quad
+    \faLinkedin\ \href{https://linkedin.com/in/prashikdeshpande}{Prashik Deshpande}
+\end{center}
+
+\vspace{0.7em}
+
+\customsection{Education}
+\begin{tabular}{@{} l @{\quad} l @{\quad\quad} >{\raggedright\arraybackslash}p{0.44\textwidth} @{\quad\quad} r @{}}
+\toprule
+\textbf{Year} & \textbf{Degree} & \textbf{Institute} & \textbf{Score} \\
+\midrule
+2023 & Integrated M.S. in Mathematics and Computing 
+     & Indian Institute of Technology Kharagpur & 70.3\% \\
+2017 & Higher Secondary Certificate (HSC)
+     & St. Paul Junior College & 90.31\% \\
+2015 & Secondary School Certificate (SSC)
+     & R. N. T. High School & 93.20\% \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.7em}
+\customsection{Work Experience}
+
+\noindent\textbf{Platform Application Services $\cdot$ Squarepoint Capital $\cdot$ Systems Specialist $\cdot$ Bengaluru} \hfill Jul 2023 -- Present
+
+\begin{itemize}
+    \item \textbf{PAS-Data} \hfill Jul 2023 -- Apr 2024
+    \begin{itemize}
+        \item Managed legacy \textbf{Chef} cookbooks for \textbf{PostgreSQL} configuration management
+        \item Developed custom \textbf{Prometheus} exporter and cookbook for collecting ethtool metrics for colocation hosts
+        \item Led initiative to standardize \textbf{Redis} deployments using custom \textbf{Ansible} collection built from ground up
+        \item Supported L2 and L3 level escalations during on-call duties for PAS and actively resolved alerts and prepared incident reports
+    \end{itemize}
+
+    \item \textbf{PAS-Middleware} \hfill May 2024 -- Oct 2024
+    \begin{itemize}
+        \item Developed custom health checks for \textbf{ClickHouse} clusters in \textbf{Consul}
+        \item Enhanced firm-wide \textbf{PostgreSQL} inventory collection with AWX scheduled jobs
+        \item Assisted in database migrations from legacy \textbf{CentOS} PostgreSQL older versions to newer \textbf{Rocky Linux} versions
+        \item Built geo-separated \textbf{MS SQL Server} cluster for quantitative research \& production data segregation
+    \end{itemize}
+
+    \item \textbf{PAS-Databases} \hfill Nov 2024 -- Present
+    \begin{itemize}
+        \item Implemented \textbf{pgBackRest} for PostgreSQL backups/restores with \textbf{Google Cloud Storage} integration
+        \item Stabilized \textbf{ClickHouse} backup pipeline with improved scripts and monitoring for duration and failures
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.7em}
+
+\customsection{Projects}
+
+\noindent\textbf{GenAI Trip Planner} \quad Hack2Skill AI Hackathon \hfill Sep 2024 -- Oct 2024
+\begin{itemize}
+    \item Built MCP server in \textbf{Python} for personalized trip planning based on user inputs
+    \item Containerized application using Docker, Flask \& uv for easy deployment on GCP VMs
+    \item Integrated Google Gemini APIs and Vertex AI for response refinement using dates, locations \& travel themes
+\end{itemize}
+
+\noindent\textbf{Topological Data Analysis and Simplicial Neural Networks} \quad Masters Thesis Project \hfill Jul 2022 -- Apr 2023
+\begin{itemize}
+    \item Applied persistent homology (topological data analysis) to study shape properties of data under Prof. Bibhas Adhikari
+    \item Extended graph representation learning to simplicial complexes to capture higher-dimensional relations
+    \item Reformulated link prediction as simplex prediction problem for complex networks
+    \item Solved using simplicial neural networks with topological features (supervised setting)
+\end{itemize}
+
+\vspace{0.7em}
+
+\customsection{Positions of Responsibility}
+
+\noindent\textbf{Technology Coordinator, Technology Students' Gymkhana} \hfill Jun 2019 -- Feb 2020
+\begin{itemize}
+    \item Maintained \& improved mobile experience of Gymkhana website for $\sim$15,000 students
+    \item Automated mess menu fetching using Google Sheets API \& Fetch API
+    \item Revamped interactive infographics for General Championships, Open IIT \& Inter IIT results
+    \item Implemented student ERP authentication for Mess Rebate Form + SQLite-backed portal
+\end{itemize}
+
+\vspace{0.7em}
+
+\customsection{Achievements}
+
+\begin{itemize}
+    \item Kishore Vaigyanik Protsahan Yojana (\textbf{KVPY}) Scholarship awarded for full course duration (AIR 7)
+\end{itemize}
+
+\vspace{0.7em}
+
+\customsection{Skills \& Expertise}
+
+\begin{tabular}{@{}p{4.4cm} @{\hspace{1.2em}} l@{}}
+\textbf{Programming Languages}      & Python • JavaScript • Ruby • C++ \\
+\textbf{Configuration \& IaC}       & Ansible • Chef • Terraform \\
+\textbf{Observability \& Monitoring}& Prometheus • Grafana • Elasticsearch \\
+\textbf{Containers \& Orchestration}& Kubernetes • Docker \\
+\textbf{Databases \& Storage}       & PostgreSQL • Microsoft SQL Server • Redis \\
+\textbf{Cloud Platforms}            & AWS • Google Cloud Platform (GCP) \\
+\textbf{Operating Systems}          & Linux • Windows Server Administration
+\end{tabular}
+
+\end{document}

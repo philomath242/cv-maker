@@ -1,0 +1,116 @@
+
+body {
+font-family: "EB Garamond", serif;
+width: 210mm;
+height: 297mm;
+border: solid red 2px;
+font-size: 15px;
+}
+
+div.header{
+    text-align: center;
+}
+h1.myname{
+    margin-bottom: -15px;
+    margin-top: -3px;
+    text-shadow: 1px 1px rgb(213, 135, 135);
+    
+}
+i.fa{
+    color: rgb(80, 54, 54);
+    margin: 3px;
+}
+a{
+    text-decoration: none;
+    margin: 0px 5px;
+    color: rgb(80, 54, 54);
+}
+
+div.section{
+    border: solid 2px aquamarine;
+    padding: 0 10px;
+}
+h1.sectiontitle{
+    font-size: 22px;
+    color: rgb(78, 59, 59);
+    text-shadow: 1px 1px darkgray;
+    margin: -2px 0 -8px 0;
+}
+hr.sectionline{
+    height: 1px;
+    background-color: black;
+    
+}
+div.education > ul > li > div{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 3px;
+}
+/* education title */
+div.education > ul > li > div > div:nth-child(1){
+    font-weight: 600;
+}
+/* education year */
+div.education > ul > li > div > div:nth-child(2){
+    text-align: right;
+    vertical-align: text-bottom;
+}
+/* education institute */
+div.education > ul > li > div > div:nth-child(3){
+    font-style: italic;
+    font-size: 15px;
+}
+/* education score */
+div.education > ul > li > div > div:nth-child(4){
+    text-align: right;
+    vertical-align: text-top;
+}
+
+/* work experience section style start */
+div.workexperience > ul > li > div{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 3px;
+}
+/* workexperience company */
+div.workexperience > ul > li > div > div:nth-child(1){
+    font-weight: 600;
+}
+/* workexperience duration */
+div.workexperience > ul > li > div > div:nth-child(2){
+    text-align: right;
+    vertical-align: text-bottom;
+}
+/* workexperience role */
+div.workexperience > ul > li > div > div:nth-child(3){
+    font-style: italic;
+    font-size: 15px;
+}
+/* workexperience place */
+div.workexperience > ul > li > div > div:nth-child(4){
+    text-align: right;
+    vertical-align: text-top;
+}
+
+
+/* project section style start */
+
+/* work experience section style start */
+div.projects > ul > li > div{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 3px;
+}
+/* projects title */
+div.projects > ul > li > div > div:nth-child(1){
+    font-weight: 600;
+}
+/* projects duration */
+div.projects > ul > li > div > div:nth-child(2){
+    text-align: right;
+    vertical-align: text-bottom;
+}
+
+
+
+
