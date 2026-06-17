@@ -1,158 +1,293 @@
-\documentclass[10pt,a4paper]{article}
+%
+% Academic CV with LaTeX
+% Author: Prashik Deshpande
+% LinkedIn: https://www.linkedin.com/in/prashikdeshpande/
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: prashikdeshpande24@gmail.com
+%
 
-% Packages
-\usepackage[
-  top=0.45in, bottom=0.65in, left=0.55in, right=0.55in
-]{geometry}
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{hyperref}
-\usepackage{fontawesome5}
+\documentclass[a4paper,10pt]{article}
+
+% Package imports
+\usepackage{latexsym}
 \usepackage{xcolor}
-\usepackage{array}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
 \usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
 \usepackage{graphicx}
-\usepackage{helvet}
-\usepackage{booktabs}
+\usepackage{cfr-lm}
 \usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
 
-\renewcommand{\familydefault}{\sfdefault}
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
 
-% Colors
-\definecolor{sectionblue}{RGB}{220,230,242}
-\definecolor{linkblue}{RGB}{0,0,255}
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
 
+% Hyperlink setup
+\usepackage[hidelinks]{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=linkblue,
-    urlcolor=linkblue
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
 }
 
-% Custom section command
-\newcommand{\customsection}[1]{%
-    \vspace{0.5em}
-    \noindent\colorbox{sectionblue}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-        \vspace{0.14em}\centering\textbf{\fontsize{10}{12}\selectfont #1}\vspace{0.14em}%
-    }}
-    \vspace{0.4em}
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
 }
 
-% No section numbers
-\renewcommand{\thesection}{}
+% URL style
+\urlstyle{same}
 
-% Bullet & list styling
-\renewcommand{\labelitemi}{$\bullet$}
-\setlist[itemize]{topsep=1pt, itemsep=0.7pt, partopsep=0pt, parsep=0pt, leftmargin=1.2em}
-\setlength{\parindent}{0pt}
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\large
+}{}{0em}{\ifnum\value{section}>1\vspace{1mm}\titlerule\vspace{-1mm}\fi}[\color{black}\titrule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.3mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\textrm{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.0mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino
 
 \begin{document}
+\headerfontiii
 
 % Header
 \begin{center}
-    \textbf{\fontsize{14}{16}\selectfont Prashik Deshpande}\\[0.5ex]
-    \footnotesize
-    \faPhone\ +91 9511728414 \quad
-    \faEnvelope\ prashikdeshpande24@gmail.com \quad
-    \faGithub\ \href{https://github.com/philomath242}{philomath242} \quad
-    \faLinkedin\ \href{https://linkedin.com/in/prashikdeshpande}{Prashik Deshpande}
+	{\Large\textbf{Prashik Deshpande}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+	\small{
+		\socialicon{\faLinkedin} \href{https://www.linkedin.com/in/prashikdeshpande/}{Prashik Deshpande} | 
+		\socialicon{\faGithub} \href{https://github.com/philomath242}{philomath242} 
+		|
+		\socialicon{\faEnvelope} \href{mailto:prashikdeshpande24@gmail.com}{prashikdeshpande24@gmail.com}
+		|
+		\socialicon{\faMobile} \href{callto:9511728414}{+91-9511728414}
+	}
 \end{center}
 
-\vspace{0.7em}
+% EDUCATION
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
 
-\customsection{Education}
-\begin{tabular}{@{} l @{\quad} l @{\quad\quad} >{\raggedright\arraybackslash}p{0.44\textwidth} @{\quad\quad} r @{}}
-\toprule
-\textbf{Year} & \textbf{Degree} & \textbf{Institute} & \textbf{Score} \\
-\midrule
-2023 & Integrated M.S. in Mathematics and Computing 
-     & Indian Institute of Technology Kharagpur & 70.3\% \\
-2017 & Higher Secondary Certificate (HSC)
-     & St. Paul Junior College & 90.31\% \\
-2015 & Secondary School Certificate (SSC)
-     & R. N. T. High School & 93.20\% \\
-\bottomrule
-\end{tabular}
+\resumeSubheading
+{Int. M. Sc. in Mathematics and Computing}{CGPA : \textbf{7.44}}
+{Indian Institute of Technology Kharagpur}{2018-2023}
 
-\vspace{0.7em}
-\customsection{Work Experience}
+\resumeSubheading
+{Higher Secondary School Certificate}{Percentage : \textbf{90.31\%}}
+{Maharashtra State Board of Secondary and Higher Secondary Education}{2017}
 
-\noindent\textbf{Platform Application Services $\cdot$ Squarepoint Capital $\cdot$ Systems Specialist $\cdot$ Bengaluru} \hfill Jul 2023 -- Present
+\resumeSubheading
+{Secondary School Certificate}{Percentage : \textbf{93.20\%}}
+{Maharashtra State Board of Secondary and Higher Secondary Education}{2015}
 
-\begin{itemize}
-    \item \textbf{PAS-Data} \hfill Jul 2023 -- Apr 2024
-    \begin{itemize}
+\resumeSubHeadingListEnd
+\vspace{-5mm}
+
+% WORK EXPERIENCE
+\section{\textbf{Work Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Squarepoint Capital | Platform Application Services}{Bengaluru, India}
+{Systems Specialist and Database Administrator}{July 2023 - present}
+\resumeItemListStart
+    \item[] {\small\textbf{PAS-Data} \hfill Jul 2023 -- Apr 2024}
+    \resumeItemListStart
         \item Managed legacy \textbf{Chef} cookbooks for \textbf{PostgreSQL} configuration management
         \item Developed custom \textbf{Prometheus} exporter and cookbook for collecting ethtool metrics for colocation hosts
         \item Led initiative to standardize \textbf{Redis} deployments using custom \textbf{Ansible} collection built from ground up
         \item Supported L2 and L3 level escalations during on-call duties for PAS and actively resolved alerts and prepared incident reports
-    \end{itemize}
-
-    \item \textbf{PAS-Middleware} \hfill May 2024 -- Oct 2024
-    \begin{itemize}
+    \resumeItemListEnd
+    
+    \item[] {\small\textbf{PAS-Middleware} \hfill May 2024 -- Oct 2025}
+    \resumeItemListStart
         \item Developed custom health checks for \textbf{ClickHouse} clusters in \textbf{Consul}
         \item Enhanced firm-wide \textbf{PostgreSQL} inventory collection with AWX scheduled jobs
         \item Assisted in database migrations from legacy \textbf{CentOS} PostgreSQL older versions to newer \textbf{Rocky Linux} versions
         \item Built geo-separated \textbf{MS SQL Server} cluster for quantitative research \& production data segregation
-    \end{itemize}
-
-    \item \textbf{PAS-Databases} \hfill Nov 2024 -- Present
-    \begin{itemize}
+    \resumeItemListEnd
+    
+    \item[] {\small\textbf{PAS-Databases} \hfill Nov 2025 -- Present}
+    \resumeItemListStart
         \item Implemented \textbf{pgBackRest} for PostgreSQL backups/restores with \textbf{Google Cloud Storage} integration
         \item Stabilized \textbf{ClickHouse} backup pipeline with improved scripts and monitoring for duration and failures
-    \end{itemize}
-\end{itemize}
+    \resumeItemListEnd
+\resumeItemListEnd 
 
-\vspace{0.7em}
+\resumeSubHeadingListEnd
+\vspace{-6mm}
 
-\customsection{Projects}
+% PROJECTS
+\section{\textbf{Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
 
-\noindent\textbf{GenAI Trip Planner} \quad Hack2Skill AI Hackathon \hfill Sep 2024 -- Oct 2024
-\begin{itemize}
+\resumeSubheading
+{GenAI Trip Planner | Hack2Skill AI Hackathon}{Sep 2025 -- Oct 2025}
+{Personalized trip planning engine using LLM multi-agent tools}{}
+\vspace{-5mm}
+\resumeItemListStart
     \item Built MCP server in \textbf{Python} for personalized trip planning based on user inputs
     \item Containerized application using Docker, Flask \& uv for easy deployment on GCP VMs
     \item Integrated Google Gemini APIs and Vertex AI for response refinement using dates, locations \& travel themes
-\end{itemize}
+\resumeItemListEnd
 
-\noindent\textbf{Topological Data Analysis and Simplicial Neural Networks} \quad Masters Thesis Project \hfill Jul 2022 -- Apr 2023
-\begin{itemize}
-    \item Applied persistent homology (topological data analysis) to study shape properties of data under Prof. Bibhas Adhikari
-    \item Extended graph representation learning to simplicial complexes to capture higher-dimensional relations
-    \item Reformulated link prediction as simplex prediction problem for complex networks
-    \item Solved using simplicial neural networks with topological features (supervised setting)
-\end{itemize}
+\resumeSubheading
+{Topological Data Analysis and Simplicial Neural Networks | MTP}{July 2022 - April 2023}
+{Prof. Bibhas Adhikari | IIT Kharagpur}{}
+\vspace{-5mm}
+\resumeItemListStart
+    \item Applied topological formulations for \textbf{data analysis} using persistent homology for analyzing shape of the data
+    \item Remodeled \textbf{graph representation learning} to generalize it to simplices which map higher dimensional relationships
+    \item Modified \textbf{link prediction problem} in network analysis to \textbf{simplex prediction problem} for complex networks
+    \item Modeled it using \textbf{simplicial neural networks} for supervised learning using the topological features of the network
+\resumeItemListEnd 
 
-\vspace{0.7em}
+\resumeSubHeadingListEnd
+\vspace{-4mm}
 
-\customsection{Positions of Responsibility}
+% LEADERSHIP EXPERIENCE
+\section{\textbf{Leadership Experience}}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Associate Technology Coordinator}{July 2019 - February 2020}
+{Technology Students' Gymkhana IITKGP}{}
+\vspace{-5mm}
+\resumeItemListStart
+    \item Maintained the Technology Students' Gymkhana website and enhanced the mobile experience for around 15000 students
+    \item Automated the fetching of mess menus for different halls of residence using Google Sheets API and Fetch API
+    \item Overhauled interactive infographics for previous years' General Championships and Inter IIT competitions
+    \item Functionalized student ERP authentication for a Mess Rebate Form and enabled a portal with database using SQLite
+\resumeItemListEnd 
+\resumeSubHeadingListEnd
+\vspace{-4mm}
 
-\noindent\textbf{Technology Coordinator, Technology Students' Gymkhana} \hfill Jun 2019 -- Feb 2020
-\begin{itemize}
-    \item Maintained \& improved mobile experience of Gymkhana website for $\sim$15,000 students
-    \item Automated mess menu fetching using Google Sheets API \& Fetch API
-    \item Revamped interactive infographics for General Championships, Open IIT \& Inter IIT results
-    \item Implemented student ERP authentication for Mess Rebate Form + SQLite-backed portal
-\end{itemize}
+% SKILLS
+\section{\textbf{Coursework, Certifications and Skills}}
+\vspace{1mm}
+\resumeHeadingSkillStart
+    \resumeSubItem{Languages :}{Python, C++, Go, HTML5, CSS, Javascript, SQL, PHP, Dart, LaTeX}
+    \resumeSubItem{Softwares / Technologies :}{PostgreSQL, AWS, Redis, MongoDB, Microsoft Excel, Adobe Photoshop}
+    \resumeSubItem{Libraries / Frameworks :}{React.js, Flask, Django, NumPy, Pandas, Flutter}
+    \resumeSubItem{Specializations :}{Linux Systems Administration, Infrastructure Orchestration, Automation}
+\resumeHeadingSkillEnd
+\vspace{-2mm}
 
-\vspace{0.7em}
-
-\customsection{Achievements}
-
-\begin{itemize}
+% AWARDS
+\section{\textbf{Awards and Achievements}}
+\begin{itemize}[leftmargin=*]
     \item Kishore Vaigyanik Protsahan Yojana (\textbf{KVPY}) Scholarship awarded for full course duration (AIR 7)
 \end{itemize}
+\vspace{-2mm}
 
-\vspace{0.7em}
-
-\customsection{Skills \& Expertise}
-
-\begin{tabular}{@{}p{4.4cm} @{\hspace{1.2em}} l@{}}
-\textbf{Programming Languages}      & Python • JavaScript • Ruby • C++ \\
-\textbf{Configuration \& IaC}       & Ansible • Chef • Terraform \\
-\textbf{Observability \& Monitoring}& Prometheus • Grafana • Elasticsearch \\
-\textbf{Containers \& Orchestration}& Kubernetes • Docker \\
-\textbf{Databases \& Storage}       & PostgreSQL • Microsoft SQL Server • Redis \\
-\textbf{Cloud Platforms}            & AWS • Google Cloud Platform (GCP) \\
-\textbf{Operating Systems}          & Linux • Windows Server Administration
-\end{tabular}
+% EXTRA-CURRICULAR
+\section{\textbf{Extra-Curricular Activities}}
+\begin{itemize}[leftmargin=*]
+    \item Data Science Competition, NEHRU Hall of Residence
+    \item NSS Weightlifting
+\end{itemize}
 
 \end{document}
