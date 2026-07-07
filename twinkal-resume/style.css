@@ -20,7 +20,7 @@ body {
     /* Ensure body takes full viewport height */
 }
 
-.resume-page {
+.resume-page-1{
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Subtle shadow for paper effect */
@@ -85,6 +85,15 @@ header h1 {
     margin: 0 8px;
 }
 
+/* Header Job Title */
+.job-title-header {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    color: #444;
+}
 /* Section Header Styling */
 .custom-section {
     font-family: 'Garamond', serif;
@@ -97,6 +106,13 @@ header h1 {
     margin-top: 10px;
     margin-bottom: 15px;
     letter-spacing: 0.5px;
+}
+
+/* Professional Summary */
+.professional-summary {
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height: 1.5;
 }
 
 /* Table Styling */
@@ -176,7 +192,7 @@ th {
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 2px;
-     font-size: 16px;
+     font-size: 11pt;
 }
 
 .item-date {
@@ -253,7 +269,16 @@ li {
     color: #495057;
     padding: 4px 10px;
     border-radius: 12px;
-    white-space: nowrap;
+}
+
+/* Certifications List */
+.certifications-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    list-style-type: square;
+    padding-left: 20px;
+    margin-top: 5px;
 }
 
 /* Print-specific styles */
@@ -272,7 +297,7 @@ li {
         /* White background for printing */
     }
 
-    .resume-page {
+    .resume-page-1 {
         box-shadow: none;
         /* Remove shadow when printing */
         margin: 0;
